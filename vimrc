@@ -5,7 +5,7 @@ let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  au VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Plugins managed by vim-plug
@@ -43,9 +43,12 @@ set wildmenu                                                                    
 set wildmode=longest:full,full                                                  " Wildmenu settings
 
 " Filetype associations
-au BufRead,BufNewFile .fortls set filetype=jsonc                                " Interpret files of extension .fortls (fortls config files) as .jsonc files
-au BufRead,BufNewFile *.h set filetype=fortran                                  " Interpret files of extension .h as Fortran files
-au BufRead,BufNewFile *.jl set filetype=julia                                   " Interpret files of extension .jl as Julia files
+augroup filesgroup
+  au!
+  au BufRead,BufNewFile .fortls set filetype=jsonc                              " Interpret files of extension .fortls (fortls config files) as .jsonc files
+  au BufRead,BufNewFile *.h set filetype=fortran                                " Interpret files of extension .h as Fortran files
+  au BufRead,BufNewFile *.jl set filetype=julia                                 " Interpret files of extension .jl as Julia files
+augroup end
 
 " Code formatting
 set matchpairs+=<:>                                                             " Allow pair matching of arrow brackets
@@ -85,9 +88,12 @@ let fortran_do_enddo=1                                                          
 let fortran_fold=1                                                              " Allows syntax folding within Fortran files
 let fortran_fold_conditionals=1                                                 " Allows syntax folding of conditional statements within Fortran files
 let fortran_fold_multilinecomments=1                                            " Allows syntax folding of comments > 3 lines within Fortran files
-au FileType fortran setlocal shiftwidth=2 softtabstop=4 tabstop=2               " Sets size of whitespace for indent and tabs
-au Filetype fortran setlocal formatprg=fprettify\ --silent                      " Sets Fortran formatter to fprettify (go to top of file, type gqG to autoformat)
-au FileType fortran compiler gfortran                                           " Sets Fortran compiler for linting
+augroup fortrangroup
+  au!
+  au FileType fortran setlocal shiftwidth=2 softtabstop=4 tabstop=2             " Sets size of whitespace for indent and tabs
+  au Filetype fortran setlocal formatprg=fprettify\ --silent                    " Sets Fortran formatter to fprettify (go to top of file, type gqG to autoformat)
+  au FileType fortran compiler gfortran                                         " Sets Fortran compiler for linting
+augroup end
 
 " Lightline
 let g:lightline = { 'colorscheme': 'dracula',
