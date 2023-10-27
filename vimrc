@@ -1,3 +1,5 @@
+" Vim config
+
 " Automatic install of vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
