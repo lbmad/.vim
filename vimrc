@@ -15,7 +15,7 @@ call plug#begin('~/.vim/plugged')                                               
   Plug 'itchyny/lightline.vim'                                                  " Lightweight status line
   Plug 'JuliaEditorSupport/julia-vim'                                           " Support for Julia
   Plug 'justinmk/vim-dirvish'                                                   " File explorer
-  "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }                           " Fuzzy search
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }                           " Fuzzy search
   "Plug 'junegunn/fzf.vim'                                                       " Fuzzy search
   Plug 'natebosch/vim-lsc'                                                      " Language server client
   Plug 'mechatroner/rainbow_csv'                                                " Syntax highlighting for .csv files
@@ -67,10 +67,10 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['f'] = '󱈚'         
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['f90'] = '󱈚'          " Sets symbol for Fortran filetype
 
 " Applies icons to Dirvish
-"call dirvish#add_icon_fn({p -> p[-1:]=='/'?'📂':'📄'})
+call dirvish#add_icon_fn({p -> p[-1:]=='/'?'📂':'📄'})
 "call dirvish#add_icon_fn({p -> WebDevIconsGetFileTypeSymbol(p)})
-let g:DevIconsAppendArtifactFix=1
-call dirvish#add_icon_fn({p -> WebDevIconsGetFileTypeSymbol(p,p[-1:]=='/'?1:0)})  " Uses vim-devicons to add icons to vim-dirvish
+"let g:DevIconsAppendArtifactFix=1
+"call dirvish#add_icon_fn({p -> WebDevIconsGetFileTypeSymbol(p,p[-1:]=='/'?1:0)})  " Uses vim-devicons to add icons to vim-dirvish
 
 " Sets cursor for WSL via windows terminal
 if &term =~ '^xterm'                                                            " Detects whether terminal is xterm 
