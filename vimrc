@@ -16,7 +16,6 @@ call plug#begin('~/.vim/plugged')                                               
   Plug 'JuliaEditorSupport/julia-vim'                                           " Support for Julia
   Plug 'justinmk/vim-dirvish'                                                   " File explorer
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }                           " Fuzzy search
-  "Plug 'junegunn/fzf.vim'                                                       " Fuzzy search
   Plug 'natebosch/vim-lsc'                                                      " Language server client
   Plug 'mechatroner/rainbow_csv'                                                " Syntax highlighting for .csv files
   Plug 'morhetz/gruvbox'                                                        " Gruvbox colour theme 
