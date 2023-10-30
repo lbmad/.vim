@@ -29,10 +29,13 @@ set background=dark                                                             
 set breakindent                                                                 " Keeps indent when wrapping
 set cursorline                                                                  " Highlights current line
 set encoding=utf8                                                               " Sets encoding to utf8 for vim-devicons to show glyphs
+set fillchars+=vert:\                                                           " Removes \| character from vertical window split
 set ignorecase                                                                  " case-insensitive search 
 set laststatus=2                                                                " Required if using lightline to display status line correctly
-set nowrap                                                                      " No wrapping of lines that exceed window width
+set matchpairs+=<:>                                                             " Allow pair matching of arrow brackets
+set nofoldenable                                                                " Code is unfolded on start
 set noshowmode                                                                  " Removes notification of current mode in command line 
+set nowrap                                                                      " No wrapping of lines that exceed window width
 set number                                                                      " Shows line numbers
 set relativenumber                                                              " Sets line numbers to be relative to current line number
 set scrolloff=5                                                                 " Keeps 5 lines above/below cursor when scrolling files
@@ -41,6 +44,7 @@ set smartcase                                                                   
 set termguicolors                                                               " Allows 24-bit colour
 set wildmenu                                                                    " Allows use of wildmenu replacing status line for autocomplete of commands
 set wildmode=longest:full,full                                                  " Wildmenu settings
+setlocal foldmethod=syntax                                                      " Code folding is automated via syntax
 
 " Filetype associations
 augroup filesgroup
@@ -50,10 +54,8 @@ augroup filesgroup
   au BufRead,BufNewFile *.jl set filetype=julia                                 " Interpret files of extension .jl as Julia files
 augroup end
 
-" Code formatting
-set matchpairs+=<:>                                                             " Allow pair matching of arrow brackets
-set nofoldenable                                                                " Code is unfolded on start
-setlocal foldmethod=syntax                                                      " Code folding is automated via syntax
+" Custom commands
+command Config e ~/.vim/vimrc                                                   " Opens vimrc configuration file
 
 " Visual styling
 "colorscheme catppuccin_macchiato                                                " Use catppuccin macchiato colour theme
@@ -63,7 +65,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}                  
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['fortran'] = '󱈚'      " Sets symbol for Fortran filetype
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['f'] = '󱈚'            " Sets symbol for Fortran filetype
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['f90'] = '󱈚'          " Sets symbol for Fortran filetype
-set fillchars+=vert:\                                                           " Removes \| character from vertical window split
 
 " Applies icons to Dirvish
 "call dirvish#add_icon_fn({p -> p[-1:]=='/'?'📂':'📄'})
